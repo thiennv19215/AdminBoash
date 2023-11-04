@@ -2,34 +2,22 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../component/loading';
+function Admin(props) {
+  const [isload, setIsload] = useState(false)
+  const { data, deletitem } = props
+  const handlebtn = (id) => {
+    const isconfomrm = window.confirm("bạn muốn xóa k")
+    if (isconfomrm) {
 
-function Admin() {
-  const [data, Setdata] = useState([])
-  const [id, setid] = useState("0")
-  useEffect(() => {
-    const getdata = async () => {
-      const data = await axios.get("https://654347ec01b5e279de201e8f.mockapi.io/ask/users");
-      Setdata(data.data)
-    }
-    getdata()
-  }, [id])
-
-  const handlebtn = async (id) => {
-
-    const yesno = window.confirm("bạn có muốn xóa không")
-    if (yesno) {
-      await axios.delete(`https://654347ec01b5e279de201e8f.mockapi.io/ask/users/${id}`);
-      setid(id)
-      toast("xóa thành công");
-    } else {
-      toast.warning("Hủy Lệnh xóa ");
-
+      deletitem(id)
+      toast("xóa thành công")
     }
   }
-
   return (
 
-    <div>
+    <>
+      {isload ? <Loading /> : null}
       <div className="news">
         <h2 className="text-3xl p-4">Quản lý sản phẩm</h2>
       </div>
@@ -57,8 +45,7 @@ function Admin() {
           </tbody>
         </table>
       </div>
-
-    </div>
+    </>
   )
 }
 
