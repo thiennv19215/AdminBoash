@@ -3,11 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function Details({ data }) {
     const { id } = useParams()
-    const [datas, setDatas] = useState([])
-    useEffect(() => {
-        setDatas(data)
-    }, [id])
-    const newid = datas.filter(item => item.id === id)
+    const newid = data.filter(item => item.id === id)
     return (
         <>
             {newid.map((item, key) => <div key={key} className='text-center flex justify-center'>

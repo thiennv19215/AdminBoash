@@ -8,7 +8,7 @@ export default function Headers() {
     return (
         <>
             <header>
-                <div className="bg-green-700 px-4 py-4">
+                <div className="bg-gray-300 px-4 py-4">
                     <img src="https://picsum.photos/100/100" className="mx-auto rounded-full" />
                 </div>
                 <div className="nav bg-blue-950 ">

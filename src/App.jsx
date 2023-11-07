@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
 import './App.css'
-import './App.scss'
 import { Routes, Route, useParams } from 'react-router-dom'
 import { Homepage } from './assets/src/page/Homepage'
 import Headers from './assets/src/page/Headers'
@@ -14,11 +13,11 @@ import Details from './assets/src/component/Details'
 import Loading from './assets/src/component/loading'
 function App() {
   const [data, Setdata] = useState([])
-  
   const [isload, setIsload] = useState(false)
-  const deletitem = (id) => {
-    const newdata = data.filter(item => item.id !== id)
-    Setdata(newdata)
+  const deletitem = async(id) => {
+    const newid =await axios.delete(`https://654347ec01b5e279de201e8f.mockapi.io/ask/users/${+id}`)
+    const newdata = data.filter(item => item.id != newid.data.id)
+    Setdata(newdata);
   }
   useEffect(() => {
     setIsload(true)
@@ -29,7 +28,6 @@ function App() {
     }
     getdata()
   }, [])
-  console.log("rennder");
   return (
     <>
       <ToastContainer
