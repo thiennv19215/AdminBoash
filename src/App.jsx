@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
+import './App.scss'
 import { Routes, Route, useParams } from 'react-router-dom'
 import { Homepage } from './assets/src/page/Homepage'
 import Headers from './assets/src/page/Headers'
@@ -13,6 +14,7 @@ import Details from './assets/src/component/Details'
 import Loading from './assets/src/component/loading'
 function App() {
   const [data, Setdata] = useState([])
+  
   const [isload, setIsload] = useState(false)
   const deletitem = (id) => {
     const newdata = data.filter(item => item.id !== id)
