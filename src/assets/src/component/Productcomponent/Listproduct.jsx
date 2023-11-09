@@ -21,13 +21,13 @@ const Listproduct = ({data}) => {
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
-                <span className="sr-only">Edit</span>
+              <span className="sr-only">xóa</span>
               </th>
             </tr>
           </thead>
           <tbody>
-              {data?.map(item => {
-                return <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              {data?.map((item,index) => {
+                return <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {item.title}
                 </th>
@@ -40,8 +40,9 @@ const Listproduct = ({data}) => {
                 <td className="px-6 py-4">
                   {item.price}
                 </td>
-                <td className="px-6 py-4 text-right">
+                <td className="px-6 py-4 text-right flex gap-4">
                   <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                  <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">xóa</button>
                 </td>
               </tr>
               })}

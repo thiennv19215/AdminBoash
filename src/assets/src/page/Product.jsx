@@ -6,10 +6,9 @@ import Listproduct from '../component/Productcomponent/Listproduct'
 import { Modaluser } from '../component/Productcomponent/Modaluser'
 export const Product = () => {
   const [data, setData] = useState([])
-  const [limit, setLimit] = useState(true)
   const [modal, setModal] = useState(false);
 
-
+  //staste
   useEffect(() => {
     const handledata = async () => {
       const res = await axios.get("https://dummyjson.com/products")
@@ -18,22 +17,35 @@ export const Product = () => {
     }
     handledata()
   }, [])
-
+  //unmout // mouted
   const handlestatus = () => {
     setModal(!modal)
   }
+  //ham nhan trạng thái
+  const newuse = (item)=> {
+    const news = item.concat(data)
+   setData(news, ...data)
+   setModal(false)
+  }
+  //thêm use
+
+  //xóa
+  
   return (
     <div className='py-2'>
       <Modaluser
         modal={modal}
+        newuse={newuse}
         childhandle={handlestatus}
-         />
+      />
 
       <div className='py-3'>
-        <button onClick={handlestatus} className='py-2 px-6 bg-[#488aec] text-white flex rounded text-center shadow-xl'>thêm sản phẩm</button>
+        <button onClick={handlestatus}
+          className='py-2 px-6 bg-[#488aec] text-white flex rounded text-center shadow-xl'
+        >thêm sản phẩm</button>
       </div>
 
-      {limit && <Listproduct data={data} handlestatus={() => handlestatus} />}
+      <Listproduct data={data} handlestatus={() => handlestatus} />
     </div>
   )
 }

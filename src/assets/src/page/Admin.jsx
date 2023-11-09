@@ -17,7 +17,7 @@ function Admin(props) {
         <h2 className="text-3xl p-4">Quản lý sản phẩm</h2>
       </div>
       <div className="newss">
-        <table className="border-collapse w-full">
+        <table className="tw-border-collapse w-full">
           <thead>
             <tr className="border">
               <th>#</th>
